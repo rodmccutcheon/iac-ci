@@ -1,0 +1,10 @@
+.DS_Store
+/.idea/
+
+/jenkins/keys/
+/jenkins/ansible/roles/
+/jenkins/ansible/vars.yml
+
+/sonarqube/keys/
+/sonarqube/ansible/roles/
+/sonarqube/ansible/vars.yml

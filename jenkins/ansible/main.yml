@@ -1,0 +1,23 @@
+---
+- hosts: tag_Name_jenkins_master
+  become: yes
+  become_method: sudo
+  remote_user: ubuntu
+
+  vars_files:
+    vars.yml
+
+  pre_tasks:
+    - name: Update apt cache if needed.
+      apt: update_cache=yes cache_valid_time=3600
+
+  roles:
+    - geerlingguy.firewall
+    - geerlingguy.ntp
+    - geerlingguy.java      
+    - geerlingguy.jenkins
+    - geerlingguy.git
+    - andrewrothstein.terraform
+    - geerlingguy.ansible
+    - geerlingguy.docker
+    - tommarshall.awscli

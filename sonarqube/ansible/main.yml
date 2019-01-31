@@ -1,0 +1,23 @@
+---
+- hosts: sonarqube
+  gather_facts: true
+
+  vars:
+    firewall_allowed_tcp_ports:
+      - "22"
+      - "9000"
+    ntp_timezone: Australia/Melbourne
+
+  pre_tasks:
+    - name: Update apt cache if needed.
+      apt: update_cache=yes cache_valid_time=3600
+
+    - name: Ensure unzip is installed.
+      apt: name=unzip state=installed
+
+  roles:
+    - geerlingguy.firewall
+    - geerlingguy.ntp
+    - geerlingguy.java
+    - geerlingguy.postgresql
+    - geerlingguy.sonar
